@@ -22,6 +22,10 @@ class KickStart extends LaravelUI
         $this->createSqliteDB();
         $this->populateMigrations();
         $this->updateSeeders();
+        $this->overrideModels();
+        $this->overrideAuthServiceProvider();
+        $this->addLocalization();
+        $this->overrideWebRoute();
     }
 
     protected function overrideEnv(){
@@ -49,6 +53,31 @@ class KickStart extends LaravelUI
         $this->push('database/migrations/2014_10_12_000001_create_roles_table.php','database/migrations/2014_10_12_000001_create_roles_table.php');
         $this->push('database/migrations/2014_10_12_000002_create_role_user_table.php','database/migrations/2014_10_12_000002_create_role_user_table.php');
         $this->push('database/migrations/2014_10_12_000003_create_foren_keys_for_role_user_table.php','database/migrations/2014_10_12_000003_create_foren_keys_for_role_user_table.php');
+    }
+
+    protected function overrideModels()
+    {
+        if (!is_dir(base_path('/app/Models'))) {
+            mkdir(base_path('/app/Models'));
+        }
+
+        $this->push('app/models/Role.php','app/Models/Role.php');
+        $this->push('app/models/User.php','app/User.php');
+    }
+
+    protected function addLocalization()
+    {
+        $this->push('app/http/middlewares/Localization.php','app/Http/Middleware/Localization.php');
+    }
+
+    protected function overrideAuthServiceProvider()
+    {
+        $this->push('app/providers/AuthServiceProvider.php','app/Providers/AuthServiceProvider.php');
+    }
+
+    protected function overrideWebRoute()
+    {
+        $this->push('routes/web.php','routes/web.php');
     }
 
 }
