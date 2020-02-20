@@ -17,10 +17,15 @@ class KickStart extends LaravelUI
     public function prepare()
     {
         static::ensureComponentDirectoryExists();
-        static::updatePackages();
 
+        $this->overrideEnv();
         $this->createSqliteDB();
+        $this->populateMigrations();
         $this->updateSeeders();
+    }
+
+    protected function overrideEnv(){
+        $this->push('.env','.env');
     }
 
     protected function createSqliteDB(){
@@ -36,6 +41,14 @@ class KickStart extends LaravelUI
     private function push($tempPath, $newPath)
     {
         return copy(__DIR__ . '/Temp/' . $tempPath, base_path('/' . $newPath));
+    }
+
+    protected function populateMigrations()
+    {
+        $this->push('database/migrations/2014_10_12_000000_create_users_table.php','database/migrations/2014_10_12_000000_create_users_table.php');
+        $this->push('database/migrations/2014_10_12_000001_create_roles_table.php','database/migrations/2014_10_12_000001_create_roles_table.php');
+        $this->push('database/migrations/2014_10_12_000002_create_role_user_table.php','database/migrations/2014_10_12_000002_create_role_user_table.php');
+        $this->push('database/migrations/2014_10_12_000003_create_foren_keys_for_role_user_table.php','database/migrations/2014_10_12_000003_create_foren_keys_for_role_user_table.php');
     }
 
 }
