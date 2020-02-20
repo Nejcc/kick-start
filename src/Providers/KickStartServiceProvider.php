@@ -1,6 +1,6 @@
 <?php
 
-namespace Nejcc\TailwindPrepare\Providers;
+namespace Nejcc\KickStart\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Ui\UiCommand;
