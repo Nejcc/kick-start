@@ -14,18 +14,16 @@ composer require laravel/ui
 composer require nejcc/kickStart
 ```
 
-#### 3. Tailwind prepare (when you run this command will replace your UI folder!!)
-##### For Tailwind Only
 ```
 php artisan ui kickstart
 ```
-#### 4. Change .env 
+#### 3. Change .env 
 
 ```
 DB_CONNECTION=sqlite
 ```
 
-#### 5. serve
+#### 4. serve
 
 ```
 php artisan serve
