@@ -28,8 +28,18 @@ class KickStartServiceProvider extends ServiceProvider
     {
         UiCommand::macro('kickstart', function (UiCommand $command) {
             $prepare = new KickStart();
-            $prepare->install();
-            $command->info('Laravel KickStart was successfuly installed');
+            $command->info(' Welcome to Laravel KickStart');
+            $command->info(' The following command will modify some files');
+            if($command->confirm('Do you wish to continue? (yes|no)[no]',true))
+            {
+                $prepare->install();
+                $command->info('Laravel KickStart was successfuly installed');
+            }
+            else{
+                $command->info("Process terminated by user");
+                return;
+            }
+
         });
     }
 }
