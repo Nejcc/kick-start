@@ -25,7 +25,7 @@ class KickStart extends LaravelUI
         $this->overrideModels();
         $this->overrideAuthServiceProvider();
         $this->addLocalization();
-        $this->overrideWebRoute();
+        $this->appendWebRoute();
     }
 
     protected function overrideEnv(){
@@ -75,9 +75,9 @@ class KickStart extends LaravelUI
         $this->push('app/providers/AuthServiceProvider.php','app/Providers/AuthServiceProvider.php');
     }
 
-    protected function overrideWebRoute()
+    protected function appendWebRoute()
     {
-        $this->push('routes/web.php','routes/web.php');
+        file_put_contents(base_path('/routes/web.php'), file_get_contents(__DIR__ . '/Temp/routes/web.php'), FILE_APPEND);
     }
 
 }
