@@ -23,27 +23,27 @@ composer require nejcc/kickStart
 
 ##### This command will modify and change following files: 
 
-*   app
-    *   http
-        *   middlewares
+*   app/
+    *   http/
+        *   middlewares/
             *   Localization.php [add]
-    *   Models
+    *   Models/
         *   Role.php [add]
     *   User.php [overrid]
-    *   Providers
+    *   Providers/
         *   AuthServicePeovider.php [overrid]
-*   database
-    *   migration
+*   database/
+    *   migration/
         *   user [overided]
         *   roles [add]
         *   roles_user [add]
         *   foren_roles_user [add]
-    *   seeds
+    *   seeds/
         *   DatabaseSeeder.php [override]
         *   RoleTableSeeder.php [add]
         *   UserTableSeeder.php [add]
     * database.sqlite
-* routes
+* routes/
     web.php [append]
 *   .env [override]
 
@@ -54,7 +54,7 @@ php artisan ui kickstart
 ```
 
 
-#### 4. serve
+#### 4. serve (optional)
 
 ```
 php artisan serve
