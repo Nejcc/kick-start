@@ -12,6 +12,7 @@ class KickStart extends LaravelUI
     public function install()
     {
         $this->prepare();
+
     }
 
     public function prepare()

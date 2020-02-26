@@ -16,7 +16,7 @@ class KickStartServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
