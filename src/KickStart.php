@@ -25,6 +25,7 @@ class KickStart extends LaravelUI
         $this->updateSeeders();
         $this->overrideModels();
         $this->overrideAuthServiceProvider();
+        $this->overrideAppServiceProvider();
         $this->addLocalization();
         $this->appendWebRoute();
     }
@@ -74,6 +75,11 @@ class KickStart extends LaravelUI
     protected function overrideAuthServiceProvider()
     {
         $this->push('app/providers/AuthServiceProvider.php','app/Providers/AuthServiceProvider.php');
+    }
+
+    protected function overrideAppServiceProvider()
+    {
+        $this->push('app/providers/AppServiceProvider.php','app/Providers/AppServiceProvider.php');
     }
 
     protected function appendWebRoute()
